@@ -75,24 +75,5 @@ void CBuiltinDig::doPushBtn()
         displayTextEdit->setText(FileName);
 
     }
-    if(btn == progressPushBtn){
-        QProgressDialog progress(tr("正在複製檔案"),
-                                 tr("取消"),
-                                 0,
-                                 10000,
-                                 this);
-        progress.setWindowTitle(tr("進度對話盒"));
-        progress.show();
-        for(int i=0;i<10000;i++)
-        {
-            progress.setValue(i);
-            qApp->processEvents();
-            if(progress.wasCanceled()){
-                break;
-            }
-            qDebug()<< i;
-        }
-        progress.setValue(10000);
-    }
 }
 
