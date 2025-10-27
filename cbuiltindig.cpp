@@ -68,13 +68,14 @@ void CBuiltinDig::doPushBtn()
     }
     if(btn == errorPushBtn)
     {
-        QErrorMessage box(this);
-        box.setWindowTitle(QStringLiteral("錯誤訊息盒"));
-        box.showMessage(QStringLiteral("錯誤訊息實例XX"));
-        box.showMessage(QStringLiteral("錯誤訊息實例XX"));
-        box.showMessage(QStringLiteral("錯誤訊息實例XX"));
-        box.exec();
+        QErrorMessage *box = new QErrorMessage(this);
+        box->setWindowTitle(QStringLiteral("錯誤訊息盒"));
+        box->showMessage(QStringLiteral("錯誤訊息實例XX"));
+        box->showMessage(QStringLiteral("錯誤訊息實例YY"));
+        box->showMessage(QStringLiteral("錯誤訊息實例ZZ"));
+        box->show();
     }
+
     if(btn == filePushBtn){
         QString FileName = QFileDialog::getOpenFileName(this, tr("開啟檔案"),"."
                                                         ,tr("任何檔案(*.*)"
@@ -89,16 +90,23 @@ void CBuiltinDig::doPushBtn()
                                                  displayTextEdit->font(),
                                                  this,
                                                  QStringLiteral("字體對話盒"));
+        if(ok){
+            displayTextEdit->setFont(font);
+        }
     }
     if(btn == inputPushBtn){
         bool ok;
-        QString texxt = QInputDialog:: getText(this,
+        QString text = QInputDialog:: getText(this,
                                                QStringLiteral("輸入對話盒"),
                                                QStringLiteral("輸入文字"),
                                                QLineEdit::Normal,
                                                QDir::home().dirName(),
                                                &ok);
+        if (ok && !text.isEmpty()) {
+            displayTextEdit->setText(text);
+        }
     }
+
     if(btn == pagePushBtn){
         QPrinter printer(QPrinter::HighResolution);
         QPageSetupDialog* dlg = new QPageSetupDialog(&printer,this);
