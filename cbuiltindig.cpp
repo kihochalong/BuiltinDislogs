@@ -13,7 +13,7 @@ CBuiltinDig::CBuiltinDig(QWidget *parent)
     : QDialog(parent)
 {
     QGridLayout *gridLayout = new QGridLayout;
-    displayTextEdit = new QTextEdit(QStringLiteral("幹你娘"));
+    displayTextEdit = new QTextEdit(QStringLiteral("四資工二乙_劉綜騏_41330247"));
     colorPushBtn    = new QPushButton(QStringLiteral("顏色對話盒"));
     errorPushBtn    = new QPushButton(QStringLiteral("錯誤訊息盒"));
     filePushBtn     = new QPushButton(QStringLiteral("檔案對話盒"));
